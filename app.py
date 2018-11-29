@@ -48,7 +48,7 @@ def Reply(text):
         return "並沒有 你是邊緣人"
     elif text=="@玉米":
         return "你個龜孫子"
-    elif text=="豪"
+    elif text=="豪":
         return "說謊的人 要吞一千斤精喔"
 
 import os
