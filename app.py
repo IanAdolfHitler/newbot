@@ -50,6 +50,8 @@ def Reply(text):
         return "並沒有 你是邊緣人"
     elif text=="@玉米":
         return "你個龜孫子"
+    elif text=="玉米":
+        return "就一個單身19年的魯蛇 懶趴比茄子還紫"
     elif text=="豪":
         return "說謊的人 要吞一千斤精喔"
     elif text=="聰明的機器人阿 你覺得葡萄如何":
@@ -72,6 +74,8 @@ def Reply(text):
         return "嫂子真棒"
     elif text=="肚臍":
         return "你愛護家園 家園守護你"
+    elif text=="db":
+        return "育朕你什麼時候升大學"
 
 import os
 if __name__ == "__main__":
