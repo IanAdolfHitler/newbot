@@ -50,6 +50,8 @@ def Reply(text):
         return "你個龜孫子"
     elif text=="豪":
         return "說謊的人 要吞一千斤精喔"
+    elif text=="聰明的機器人阿 你覺得葡萄如何":
+        return "爛透了 跟沒洗過的包皮垢一樣臭"
 
 import os
 if __name__ == "__main__":
