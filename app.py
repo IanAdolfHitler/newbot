@@ -68,6 +68,10 @@ def Reply(text):
         return "再吵我槍斃你"
     elif text=="你有什麼願望呢":
         return "客家人同性戀三餐都吃核廢料 通通關進毒氣室"
+    elif text=="意欣":
+        return "欠扁的小女孩!?"
+    elif text=="范意欣":
+        return "別再熬夜拉"
 
 
 import os
