@@ -70,6 +70,8 @@ def Reply(text):
         return "客家人同性戀三餐都吃核廢料 通通關進毒氣室"
     elif text=="加林":
         return "嫂子真棒"
+    elif text=="肚臍":
+        return "你愛護家園 家園守護你"
 
 import os
 if __name__ == "__main__":
