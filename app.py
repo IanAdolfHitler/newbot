@@ -37,7 +37,7 @@ def handle_message(event):
     line_bot_api.reply_message(event.reply_token, message)
 def Reply(text):
 	if text=="嗨":
-		return text
+		return "耖妳妹的畜牲"
 
 import os
 if __name__ == "__main__":
