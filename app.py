@@ -35,7 +35,7 @@ def callback():
 def handle_message(event):
     message = TextSendMessage(Replay(event.message.text))
     line_bot_api.reply_message(event.reply_token, message)
-def Reply(text)
+def Reply(text):
 	if text=="嗨":
 		text="Hello"
 		return TextSendMessage(text)
