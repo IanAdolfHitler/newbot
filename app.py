@@ -39,7 +39,9 @@ def Reply(text):
     if text=="嗨":
         return "請支付100元以繼續使用!"
     elif text=="打":
-        return "我可以玩雷紋嗎"
+        return "打妳妹 打我手槍"
+    elif text=="來打":
+        return "又想送頭 真的是送的不知不覺ㄟ"
     elif text=="來":
         return"你每次說來都還要1小時-.-"
     elif text=="晚點":
@@ -52,6 +54,21 @@ def Reply(text):
         return "說謊的人 要吞一千斤精喔"
     elif text=="聰明的機器人阿 你覺得葡萄如何":
         return "爛透了 跟沒洗過的包皮垢一樣臭"
+    elif text=="@葡萄":
+        return "葡萄在跟我摔角"
+    elif text=="哲漢":
+        return "嗨歌你還想要嗎?"
+    elif text=="嗨哥":
+        return "嗨哥在挖糞 別吵他"
+    elif text=="閉嘴":
+        return "我用老二撬開你嘴巴喔"
+    elif text=="嗎":
+        return "可以好好打字嗎 你乙武洋匡?"
+    elif text=="...":
+        return "再吵我槍斃你"
+    elif text=="你有什麼願望呢":
+        return "客家人同性戀三餐都吃核廢料 通通關進毒氣室"
+
 
 import os
 if __name__ == "__main__":
