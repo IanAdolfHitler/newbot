@@ -76,6 +76,10 @@ def Reply(text):
         return "你愛護家園 家園守護你"
     elif text=="db":
         return "育朕你什麼時候升大學"
+    elif text=="嫂子":
+        return "加林比較弱 你就將就一下吧"
+    elif text=="芷君":
+        return "哲漢你好厲害 你看宥軒都抬不起來"
 
 import os
 if __name__ == "__main__":
