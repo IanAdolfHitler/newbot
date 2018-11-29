@@ -37,7 +37,7 @@ def handle_message(event):
     line_bot_api.reply_message(event.reply_token, message)
 def Reply(text):
     if text=="嗨":
-        return "耖妳妹的畜牲"
+        return "請支付100元以繼續使用!"
     elif text=="打":
         return "我可以玩雷紋嗎"
     elif text=="來":
@@ -47,7 +47,8 @@ def Reply(text):
     elif text=="有人要打嗎":
         return "並沒有 你是邊緣人"
     elif text=="@玉米":
-        return "我可以玩雷紋嗎"
+        return "你個龜孫子"
+    elif text==""
 
 import os
 if __name__ == "__main__":
