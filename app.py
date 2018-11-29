@@ -40,7 +40,14 @@ def Reply(text):
         return "耖妳妹的畜牲"
     elif text=="打":
         return "我可以玩雷紋嗎"
-    
+    elif text="來":
+        return"你每次說來都還要1小時-.-"
+    elif text=="晚點":
+        return "晚點要多晚 再晚就要畢業啦"
+    elif text=="有人要打嗎":
+        return "並沒有 你是邊緣人"
+    elif text=="@玉米":
+        return "我可以玩雷紋嗎"
 
 import os
 if __name__ == "__main__":
