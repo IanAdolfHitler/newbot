@@ -31,56 +31,25 @@ def callback():
     return 'OK'
 
 # 處理訊息
+
+def KeyWord(text):
+	key={"豪":"豪妳妹","嗨":"想被打?"}
+	for k in key.keys();
+		if text.find(k) !=-1;
+			return [True,key[k]]
+	return [False]
+def Reply(event):
+	ktemp=KeyWord(event.message.text)
+	if ktemp[0]:
+		line_bot_api.reply_message(event.reply_token,TextMessage(text=ktemp[1]))
+	else 
+		line_bot_api.reply_message(event.reply_token,TextMessage(text=event.message.text))
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    message = TextSendMessage(text = Reply(event.message.text))
-    line_bot_api.reply_message(event.reply_token, message)
-def Reply(text):
-    if text=="嗨":
-        return "請支付100元以繼續使用!"
-    elif text=="打":
-        return "打妳妹 打我手槍"
-    elif text=="來打":
-        return "又想送頭 真的是送的不知不覺ㄟ"
-    elif text=="來":
-        return"你每次說來都還要1小時-.-"
-    elif text=="晚點":
-        return "晚點要多晚 再晚就要畢業啦"
-    elif text=="有人要打嗎":
-        return "並沒有 你是邊緣人"
-    elif text=="@玉米":
-        return "你個龜孫子"
-    elif text=="玉米":
-        return "就一個單身19年的魯蛇 懶趴比茄子還紫"
-    elif text=="豪":
-        return "說謊的人 要吞一千斤精喔"
-    elif text=="聰明的機器人阿 你覺得葡萄如何":
-        return "爛透了 跟沒洗過的包皮垢一樣臭"
-    elif text=="@葡萄":
-        return "葡萄在跟我摔角"
-    elif text=="哲漢":
-        return "嗨歌你還想要嗎?"
-    elif text=="嗨哥":
-        return "嗨哥在挖糞 別吵他"
-    elif text=="閉嘴":
-        return "我用老二撬開你嘴巴喔"
-    elif text=="嗎":
-        return "可以好好打字嗎 你乙武洋匡?"
-    elif text=="==":
-        return "再吵我槍斃你"
-    elif text=="你有什麼願望呢":
-        return "客家人同性戀三餐都吃核廢料 通通關進毒氣室"
-    elif text=="加林":
-        return "嫂子真棒"
-    elif text=="肚臍":
-        return "你愛護家園 家園守護你"
-    elif text=="db":
-        return "育朕你什麼時候升大學"
-    elif text=="嫂子":
-        return "加林比較弱 你就將就一下吧"
-    elif text=="芷君":
-        return "哲漢你好厲害 你看宥軒都抬不起來"
-
+    try:
+    	Reply(event)
+    except Exception as e:
+    	line_bot_api.reply_message(event.reply_token,TextMessage(text=str(e)))
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
