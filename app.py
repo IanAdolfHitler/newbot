@@ -33,35 +33,35 @@ def callback():
 # 處理訊息
 
 def KeyWord(text):
-	key={"豪":"豪妳妹","嗨":"想被打?"}
-	for k in key.keys():
-		if text.find(k) !=-1:
-			return [True,key[k]]
-	return [False]
+    key={"豪":"豪妳妹","嗨":"想被打?"}
+    for k in key.keys():
+        if text.find(k) !=-1:
+        return [True,key[k]]
+    return [False]
 def Button(event):
-	message = TemplateSendMessage(
-    	alt_text='Buttons template',
-   		template=ButtonsTemplate(
-       		thumbnail_image_url='https://example.com/image.jpg',
-       		title='Menu',
-       		text='Please select',
-        	actions=[
-            	PostbackTemplateAction(
-               		label='postback',
-               		text='postback text',
-               		data='action=buy&itemid=1'
-       		 	),
-           		MessageTemplateAction(
-            	   	label='message',
-            	   	text='message text'
-           		),
-           		URITemplateAction(
-                	label='uri',
-               		uri='http://example.com/'
-            	)
-        	]
-   		)
-	)
+    message = TemplateSendMessage(
+        alt_text='Buttons template',
+   	    template=ButtonsTemplate(
+            thumbnail_image_url='https://example.com/image.jpg',
+       	    title='Menu',
+       	    text='Please select',
+            actions=[
+                PostbackTemplateAction(
+                    label='postback',
+                    text='postback text',
+                    data='action=buy&itemid=1'
+                ),
+           	    MessageTemplateAction(
+                    label='message',
+                    text='message text'
+                ),
+                URITemplateAction(
+                    label='uri',
+               	    uri='http://example.com/'
+                )
+            ]
+        )
+    )
 line_bot_api.reply_message(event.reply_token, message)
 
 def Reply(event):
