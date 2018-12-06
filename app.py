@@ -30,7 +30,7 @@ def callback():
         abort(400)
     return 'OK'
 
-'''def KeyWord(text):
+    def KeyWord(text):
     KeyWordDict = {"你好":"你也好啊",
                    "你是誰":"我是大帥哥",
                    "帥":"帥炸了"}
@@ -38,7 +38,7 @@ def callback():
         if text.find(k) != -1:
             return [True,KeyWordDict[k]]
     return [False]
-'''
+
 def Button(event):
     message = TemplateSendMessage(
         alt_text='Buttons template',
