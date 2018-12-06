@@ -11,9 +11,9 @@ from linebot.models import *
 app = Flask(__name__)
 
 # Channel Access Token
-line_bot_api = LineBotApi('1WUu6duAA0P7ofV4J3earPdrX8masnaN6hdy6cTctFZJxTG1eWrE51wfbM6wBZtxFRU6qR2+J9+GGAxlIfWl5ZFi6blqDaLV6Pedy3YI8RDpMQjyhlkzQI1pDWwwsOgXGNSbLmpS4qwM96rSNYBFtwdB04t89/1O/w1cDnyilFU=')
+line_bot_api = LineBotApi('6ol/TkzOsx2Ej9mikY8+FU6SegSuiLpMWg8v9aLR+VJ/ERdnRFmEYoLQ2QCXZQb34Mhr5saLpkSH+5FeyQa3zaDekwISNXef8rq8FVSyuSAiSVFiQakv9u9PM6qq3dMrZ7YxbsxB2pyItBZaISwdRgdB04t89/1O/w1cDnyilFU=')
 # Channel Secret
-handler = WebhookHandler('0963231f909332b42026ae9515df6757')
+handler = WebhookHandler('e73f4ba68c0127b885304278fe5fd152')
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
@@ -30,15 +30,15 @@ def callback():
         abort(400)
     return 'OK'
 
-# 處理訊息
-
-def KeyWord(text):
-    key={"豪":"豪妳妹","嗨":"想被打?"}
-    for k in key.keys():
-        if text.find(k) !=-1:
-            return [True,key[k]]
+'''def KeyWord(text):
+    KeyWordDict = {"你好":"你也好啊",
+                   "你是誰":"我是大帥哥",
+                   "帥":"帥炸了"}
+    for k in KeyWordDict.keys():
+        if text.find(k) != -1:
+            return [True,KeyWordDict[k]]
     return [False]
-
+'''
 def Button(event):
     message = TemplateSendMessage(
         alt_text='Buttons template',
@@ -63,21 +63,28 @@ def Button(event):
             ]
         )
     )
-line_bot_api.reply_message(event.reply_token, message)
+    line_bot_api.reply_message(event.reply_token, message)
 
-def Reply(event):
-	ktemp=KeyWord(event.message.text)
-	if ktemp[0]:
-		line_bot_api.reply_message(event.reply_token,TextMessage(text=ktemp[1]))
-	else :
-		line_bot_api.reply_message(event.reply_token,TextMessage(text=event.message.text))
+'''def Reply(event):
+    Ktemp = KeyWord(event.message.text)
+    if Ktemp[0]:
+        line_bot_api.reply_message(event.reply_token,
+            TextSendMessage(text = Ktemp[1]))
+    else:
+        line_bot_api.reply_message(event.reply_token,
+            TextSendMessage(text = event.message.text))
+            '''
+
+# 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     try:
-    	Button(event)
-    	#Reply(event)
+        Button(event)
+        #Reply(event)
     except Exception as e:
-    	line_bot_api.reply_message(event.reply_token,TextMessage(text=str(e)))
+        line_bot_api.reply_message(event.reply_token, 
+            TextSendMessage(text=str(e)))
+
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
