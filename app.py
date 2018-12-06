@@ -65,22 +65,19 @@ def Button(event):
     )
     line_bot_api.reply_message(event.reply_token, message)
 
-'''def Reply(event):
+def Reply(event):
     Ktemp = KeyWord(event.message.text)
     if Ktemp[0]:
         line_bot_api.reply_message(event.reply_token,
             TextSendMessage(text = Ktemp[1]))
     else:
-        line_bot_api.reply_message(event.reply_token,
-            TextSendMessage(text = event.message.text))
-            '''
+        Button(event)
 
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     try:
-        Button(event)
-        #Reply(event)
+        Reply(event)
     except Exception as e:
         line_bot_api.reply_message(event.reply_token, 
             TextSendMessage(text=str(e)))
