@@ -57,7 +57,7 @@ def Button(event):
                 ),
                 URITemplateAction(
                     label='uri',
-               	    uri='http://example.com/'
+                    uri='http://example.com/'
                 )
             ]
         )
