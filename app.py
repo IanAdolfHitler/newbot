@@ -36,8 +36,9 @@ def KeyWord(text):
     key={"豪":"豪妳妹","嗨":"想被打?"}
     for k in key.keys():
         if text.find(k) !=-1:
-        return [True,key[k]]
+            return [True,key[k]]
     return [False]
+
 def Button(event):
     message = TemplateSendMessage(
         alt_text='Buttons template',
