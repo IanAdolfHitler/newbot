@@ -30,7 +30,7 @@ def callback():
         abort(400)
     return 'OK'
 
-def KeyWord(text):
+def KeyWord(event):
     KeyWordDict = {"嗨":"你這死賤畜",
                    "打":"你別再戳了好不好 去洗澡",
                    "豪":"說謊的人要吞一千斤精喔",
