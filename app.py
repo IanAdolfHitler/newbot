@@ -61,7 +61,7 @@ def KeyWord(text):
                    "快":"等你弄完換 我把你操的兵兵乓乓"}
     for k in KeyWordDict.keys():
         if text.find(k) != -1:
-            return [True,KeyWordDict[k]]
+            return [True,KeyWordDict[KeyWord]]
     return [False]
 
 def Reply(event):
