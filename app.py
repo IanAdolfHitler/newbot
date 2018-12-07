@@ -60,7 +60,7 @@ def KeyWord(text):
                    "滾":"好 我走 但是在我把你弄到懷孕後ㄎㄎ",
                    "快":"等你弄完換 我把你操的兵兵乓乓"}
     for k in KeyWordDict.keys():
-        if text.find(k) != -1:
+        if text.find(KeyWord) != -1:
             return [True,KeyWordDict[KeyWord]]
     return [False]
 
