@@ -35,7 +35,7 @@ def callback():
 def handle_message(event):
     message = TextSendMessage(text = Reply(event.message.text))
     line_bot_api.reply_message(event.reply_token, message)
-def KeyWord(event):
+def KeyWord(text):
     KeyWordDict = {"嗨":"你這死賤畜",
                    "打":"你別再戳了好不好 去洗澡",
                    "豪":"說謊的人要吞一千斤精喔",
