@@ -69,7 +69,7 @@ def Button(event):
             actions=[
                 MessageTemplateAction(
                     label='來',
-                    data='還想戳我啊畜生-.-'
+                    data='來'
                 ),
                 MessageTemplateAction(
                     label='我不要阿',
