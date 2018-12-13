@@ -85,12 +85,12 @@ def Button(event):
 #回復函式
 def Reply(event):
     Ktemp = KeyWord(event)
-    if Ktemp[0]:
-        line_bot_api.reply_message(event.reply_token, 
-            TextSendMessage(text = Ktemp[1]))
-    elif event.message.text == "要不要來打":
+    if event.message.text == "要不要來打":
         line_bot_api.reply_message(event.reply_token,
             Button(event))
+    elif Ktemp[0]:
+        line_bot_api.reply_message(event.reply_token, 
+            TextSendMessage(text = Ktemp[1]))
     #else:
         #line_bot_api.reply_message(event.reply_token,
             #TextMessage(text = event.message.text))
