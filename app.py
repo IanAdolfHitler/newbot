@@ -97,7 +97,7 @@ def handle_postback(event):
     if command[0]=="來":
        line_bot_api.reply_message(event.reply_token,
             TextSendMessage(text="還想戳我啊畜生"))
-       line_bot_api.push_message(event.source.user_id,訊息物件,TextSendMessage(text="再戳我送你去取精"))   
+       line_bot_api.push_message(event.source.user_id,TextSendMessage(text="再戳我送你去取精"))   
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
