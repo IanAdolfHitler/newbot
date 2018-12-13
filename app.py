@@ -65,7 +65,7 @@ def Button(event):
         template=ButtonsTemplate(
             thumbnail_image_url='https://github.com/leavingink/muyang/blob/master/sheep.png?raw=true',
             title='英雄列隊',
-            text='要不要來打lol阿',
+            text='要不要來打',
             actions=[
                 MessageTemplateAction(
                     label='來',
@@ -91,9 +91,6 @@ def Reply(event):
     elif Ktemp[0]:
         line_bot_api.reply_message(event.reply_token, 
             TextSendMessage(text = Ktemp[1]))
-    #else:
-        #line_bot_api.reply_message(event.reply_token,
-            #TextMessage(text = event.message.text))
 @handler.add(PostbackEvent)
 def handle_postback(event):
     command=event.postback.data.split(',')
