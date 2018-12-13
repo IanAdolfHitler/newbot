@@ -1,10 +1,10 @@
 from flask import Flask, request, abort
 
 from linebot import (
-	LineBotApi, WebhookHandler
+    LineBotApi, WebhookHandler
 )
 from linebot.exceptions import (
-	InvalidSignatureError
+    InvalidSignatureError
 )
 from linebot.models import *
 
@@ -18,20 +18,20 @@ handler = WebhookHandler('0963231f909332b42026ae9515df6757')
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
-	# get X-Line-Signature header value
-	signature = request.headers['X-Line-Signature']
-	# get request body as text
-	body = request.get_data(as_text=True)
-	app.logger.info("Request body: " + body)
-	# handle webhook body
-	try:
-		handler.handle(body, signature)
-	except InvalidSignatureError:
-		abort(400)
-	return 'OK'
+    # get X-Line-Signature header value
+    signature = request.headers['X-Line-Signature']
+    # get request body as text
+    body = request.get_data(as_text=True)
+    app.logger.info("Request body: " + body)
+    # handle webhook body
+    try:
+        handler.handle(body, signature)
+    except InvalidSignatureError:
+        abort(400)
+    return 'OK'
 #關鍵字
 def KeyWord(event):
-	KeyWordDict = {"嗨":"你這死賤畜",
+    KeyWordDict = {"嗨":"你這死賤畜",
                    "打":"你別再戳了好不好 去洗澡",
                    "豪":"說謊的人要吞一千斤精喔",
                    "來":"來什麼來 我就是要去妳妹的",
@@ -54,56 +54,62 @@ def KeyWord(event):
                    "有人":"這裡沒你的事 滾",
                    "滾":"好 我走 但是在我把你弄到懷孕後ㄎㄎ",
                    "快":"等你弄完 換我把你操的兵兵乓乓"}
-	for k in KeyWordDict.keys():
-		if event.message.text.find(k) != -1:
-			return [True, KeyWordDict[k]]
-	return [False]
+    for k in KeyWordDict.keys():
+        if event.message.text.find(k) != -1:
+            return [True, KeyWordDict[k]]
+    return [False]
 #按鈕版面
 def Button(event):
-	return TemplateSendMessage(
-		alt_text='yeeee',
-		template=ButtonsTemplate(
-			thumbnail_image_url='https://github.com/leavingink/muyang/blob/master/sheep.png?raw=true',
-			title='Eternal',
-			text='呼叫',
-			actions=[
-				MessageTemplateAction(
-					label='',
-					text=''
-				),
-				MessageTemplateAction(
-					label='',
-					text=''
-				),
-				MessageTemplateAction(
-					label='',
-					text=''
-				)
-			]
-		)
-	)
+    return TemplateSendMessage(
+        alt_text='yeeee',
+        template=ButtonsTemplate(
+            thumbnail_image_url='https://github.com/leavingink/muyang/blob/master/sheep.png?raw=true',
+            title='英雄列隊',
+            text='要不要來打lol阿',
+            actions=[
+                MessageTemplateAction(
+                    label='來',
+                    data='還想戳我啊畜生-.-'
+                ),
+                MessageTemplateAction(
+                    label='我不要阿',
+                    data='你在大聲什麼啦!'
+                ),
+                MessageTemplateAction(
+                    label='等等打',
+                    data='每次說等等都要等到天亮'
+                )
+            ]
+        )
+    )
 #回復函式
 def Reply(event):
-	Ktemp = KeyWord(event)
-	if Ktemp[0]:
-		line_bot_api.reply_message(event.reply_token, 
-			TextSendMessage(text = Ktemp[1]))
-	elif event.message.text == "呼叫":
-		line_bot_api.reply_message(event.reply_token,
-			Button(event))
-	#else:
-		#line_bot_api.reply_message(event.reply_token,
-			#TextMessage(text = event.message.text))
+    Ktemp = KeyWord(event)
+    if Ktemp[0]:
+        line_bot_api.reply_message(event.reply_token, 
+            TextSendMessage(text = Ktemp[1]))
+    elif event.message.text == "呼叫":
+        line_bot_api.reply_message(event.reply_token,
+            Button(event))
+    #else:
+        #line_bot_api.reply_message(event.reply_token,
+            #TextMessage(text = event.message.text))
+@handler.add(PostbackEvent)
+def handle_postback(event):
+    command=event.postback.data.split(',')
+    if command[0]=="來":
+       line_bot_api.reply_message(event.reply_token,
+            TextSendMessage(text="還想戳我啊畜生"))   
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-	try:
-		Reply(event)
-	except Exception as e:
-		line_bot_api.reply_message(event.reply_token,
-			TextSendMessage(text=str(e)))
+    try:
+        Reply(event)
+    except Exception as e:
+        line_bot_api.reply_message(event.reply_token,
+            TextSendMessage(text=str(e)))
 import os
 if __name__ == "__main__":
-	port = int(os.environ.get('PORT', 5000))
-	app.run(host='0.0.0.0', port=port)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
 
