@@ -88,7 +88,7 @@ def Reply(event):
     if Ktemp[0]:
         line_bot_api.reply_message(event.reply_token, 
             TextSendMessage(text = Ktemp[1]))
-    elif event.message.text == "呼叫":
+    elif event.message.text == "要不要來打":
         line_bot_api.reply_message(event.reply_token,
             Button(event))
     #else:
