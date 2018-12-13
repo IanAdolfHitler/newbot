@@ -11,9 +11,9 @@ from linebot.models import *
 app = Flask(__name__)
 
 # Channel Access Token
-line_bot_api = LineBotApi('1WUu6duAA0P7ofV4J3earPdrX8masnaN6hdy6cTctFZJxTG1eWrE51wfbM6wBZtxFRU6qR2 + J9 + GGAxlIfWl5ZFi6blqDaLV6Pedy3YI8RDpMQjyhlkzQI1pDWwwsOgXGNSbLmpS4qwM96rSNYBFtwdB04t89 / 1O / w1cDnyilFU =')
+line_bot_api = LineBotApi('6ol/TkzOsx2Ej9mikY8+FU6SegSuiLpMWg8v9aLR+VJ/ERdnRFmEYoLQ2QCXZQb34Mhr5saLpkSH+5FeyQa3zaDekwISNXef8rq8FVSyuSAiSVFiQakv9u9PM6qq3dMrZ7YxbsxB2pyItBZaISwdRgdB04t89/1O/w1cDnyilFU=')
 # Channel Secret
-handler = WebhookHandler('0963231f909332b42026ae9515df6757')
+handler = WebhookHandler('e73f4ba68c0127b885304278fe5fd152')
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
@@ -30,7 +30,10 @@ def callback():
         abort(400)
     return 'OK'
 
-def KeyWord(text):
+#----------從這裡開始複製----------
+
+#關鍵字系統
+def KeyWord(event):
     KeyWordDict = {"嗨":"你這死賤畜",
                    "打":"你別再戳了好不好 去洗澡",
                    "豪":"說謊的人要吞一千斤精喔",
@@ -54,22 +57,46 @@ def KeyWord(text):
                    "有人":"這裡沒你的事 滾",
                    "滾":"好 我走 但是在我把你弄到懷孕後ㄎㄎ",
                    "快":"等你弄完 換我把你操的兵兵乓乓"}
+
     for k in KeyWordDict.keys():
-        if text.find(k) != -1:
+        if event.message.text.find(k) != -1:
             return [True,KeyWordDict[k]]
     return [False]
 
+#按鈕版面系統
+def Button(event):
+    return TemplateSendMessage(
+        alt_text='特殊訊息，請進入手機查看',
+        template=ButtonsTemplate(
+            thumbnail_image_url='https://github.com/54bp6cl6/LineBotClass/blob/master/logo.jpg?raw=true',
+            title='HPClub - Line Bot 教學',
+            text='大家學會了ㄇ',
+            actions=[
+                PostbackTemplateAction(
+                    label='還沒',
+                    data='這裡留空就好，不要刪掉'
+                ),
+                MessageTemplateAction(
+                    label='差不多了',
+                    text='差不多了'
+                ),
+                URITemplateAction(
+                    label='幫我們按個讚',
+                    uri='https://www.facebook.com/ShuHPclub'
+                )
+            ]
+        )
+    )
 
-
+#回覆函式
 def Reply(event):
-    Ktemp = KeyWord(event.message.text)
+    Ktemp = KeyWord(event)
     if Ktemp[0]:
         line_bot_api.reply_message(event.reply_token,
             TextSendMessage(text = Ktemp[1]))
     else:
         line_bot_api.reply_message(event.reply_token,
-            TextSendMessage(text = event.message.text))
-            
+            Button(event))
 
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
@@ -79,6 +106,8 @@ def handle_message(event):
     except Exception as e:
         line_bot_api.reply_message(event.reply_token, 
             TextSendMessage(text=str(e)))
+
+#----------複製到這裡結束----------
 
 import os
 if __name__ == "__main__":
