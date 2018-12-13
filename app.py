@@ -89,7 +89,7 @@ def Button(event):
 #回復函式
 def Reply(event):
     Ktemp = event.message.text.split(",")
-    if event.message.text == "要不要來打" and event.source.user_id=="Uad9ac35b0ebba03da9c51ab1516a18ca":
+        if Ktemp== "要不要來打" and event.source.user_id=="Uad9ac35b0ebba03da9c51ab1516a18ca":
         line_bot_api.reply_message(event.reply_token,
             Button(event))
     elif Ktemp[0]:
