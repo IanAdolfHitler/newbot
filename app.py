@@ -87,7 +87,7 @@ def Reply(event):
     Ktemp = KeyWord(event)
     if event.message.text == "要不要來打":
         line_bot_api.reply_message(event.reply_token,
-            Buttion(event))
+            Button(event))
     elif Ktemp[0]:
         line_bot_api.reply_message(event.reply_token,
             TextSendMessage(text = Ktemp[1]))
