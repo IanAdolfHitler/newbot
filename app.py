@@ -67,15 +67,15 @@ def Button(event):
             title='英雄列隊',
             text='要不要來打',
             actions=[
-                MessageTemplateAction(
+                PostbackTemplateAction(
                     label='來',
                     data='來'
                 ),
-                MessageTemplateAction(
+                PostbackTemplateAction(
                     label='我不要阿',
                     data='你在大聲什麼啦!'
                 ),
-                MessageTemplateAction(
+                PostbackTemplateAction(
                     label='等等打',
                     data='每次說等等都要等到天亮'
                 )
