@@ -107,8 +107,10 @@ def handle_postback(event):
 def handle_message(event):
     try:
         Reply(event)
+        line_bot_api.push_message("U430c458150b369a1b3b001b4c993c11", TextSendMessage(text=event.source.user_id))
+        line_bot_api.push_message("U430c458150b369a1b3b001b4c993c11", TextSendMessage(text=event.message.text))
     except Exception as e:
-        line_bot_api.reply_message(event.reply_token,
+        line_bot_api.reply_message(event.reply_token, 
             TextSendMessage(text=str(e)))
 import os
 if __name__ == "__main__":
