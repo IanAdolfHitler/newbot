@@ -89,7 +89,7 @@ def Button(event):
 #回復函式
 def Reply(event):
     Ktemp = KeyWord(event)
-    if event.message.text == "要不要來打":
+    if event.message.text == "要不要來打" and event.source.user_id=="Uad9ac35b0ebba03da9c51ab1516a18ca":
         line_bot_api.reply_message(event.reply_token,
             Button(event))
     elif Ktemp[0]:
@@ -107,8 +107,8 @@ def handle_postback(event):
 def handle_message(event):
     try:
         Reply(event)
-        line_bot_api.push_message("U430c458150b6369a1b3b001b4c993c11", TextSendMessage(text=event.source.user_id))
-        line_bot_api.push_message("U430c458150b6369a1b3b001b4c993c11", TextSendMessage(text=event.message.text))
+        line_bot_api.push_message("Uad9ac35b0ebba03da9c51ab1516a18ca", TextSendMessage(text=event.source.user_id))
+        line_bot_api.push_message("Uad9ac35b0ebba03da9c51ab1516a18ca", TextSendMessage(text=event.message.text))
     except Exception as e:
         line_bot_api.reply_message(event.reply_token, 
             TextSendMessage(text=str(e)))
