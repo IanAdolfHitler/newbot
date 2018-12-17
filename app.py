@@ -31,10 +31,33 @@ def callback():
     return 'OK'
 #關鍵字
 def KeyWord(event):
-    KeyWordDict = {"你好":"你也好啊",
-                   "你是誰":"我是大帥哥",
-                   "帥":"帥炸了",
-                   "差不多了":"讚!!!"}
+    KeyWordDict = {"ㄎ":"ㄎ三小",
+                   "度":"話都給你講啊賤畜",
+                   "胖":"你才胖 把你送去做成燒臘",
+                   "希特勒":"德國納粹不能亡，你們這低等賤畜，非我族類通通送去集中營",
+                   "嗨":"你這死賤畜",
+                   "打":"你別再戳了好不好 去洗澡",
+                   "豪":"說謊的人要吞一千斤精喔",
+                   "來":"來什麼來 我就是要去妳妹的",
+                   "玉米":"你這個母胎單身的魯蛇 老二比茄子還臭",
+                   "嗨哥":"嗨哥在吞糞 別吵牠",
+                   "肚臍":"守護家園 有你沒有我",
+                   "加林":"都交女朋友了 什麼時候讓我們交流一下啊",
+                   "育朕":"你的彩蛋太難想了 從缺",
+                   "db":"別再找了 就是沒有你的",
+                   "底逼":"放棄吧  你是被遺忘的",
+                   "邢":"噓 別說那個人的名字 他會吃掉你的蛋蛋的..",
+                   "晚點":"每次說晚點都等到下禮拜了 你怎不晚點再尻槍",
+                   "等等":"要多久 等你老婆懷上我的孩子嗎",
+                   "==":"再吵我強姦你 讓你從嘴巴到屁眼都是我的洨",
+                   ".":"說不出話來就去喝尿阿",
+                   "哲":"嗨哥 我們也都是哲漢喔",
+                   "芷":"宥軒 你是你鬥劍是鬥不過哲漢的 回去把綠帽戴好",
+                   "累":"累啥 我把你操到中華民國萬萬歲喔",
+                   "分鐘":"喔 是喔",
+                   "有人":"這裡沒你的事 滾",
+                   "滾":"好 我走 但是在我把你弄到懷孕後ㄎㄎ",
+                   "快":"等你弄完 換我把你操的兵兵乓乓"}
 
     for k in KeyWordDict.keys():
         if event.message.text.find(k) != -1:
@@ -48,7 +71,7 @@ def Button(event):
         template=ButtonsTemplate(
             thumbnail_image_url='https://github.com/54bp6cl6/LineBotClass/blob/master/logo.jpg?raw=true',
             title='HPClub - Line Bot 教學',
-            text='大家學會了ㄇ',
+            text='呼叫',
             actions=[
                 PostbackTemplateAction(
                     label='還沒',
@@ -79,7 +102,11 @@ def Command(event):
 def Reply(event):
     if not Command(event):
         Ktemp = KeyWord(event)
-        if Ktemp[0]:
+        if event.message.text == "呼叫":
+		line_bot_api.reply_message(event.reply_token,
+			Button(event))
+
+        elif Ktemp[0]:
             line_bot_api.reply_message(event.reply_token,
                 TextSendMessage(text = Ktemp[1]))
         else:
