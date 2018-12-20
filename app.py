@@ -30,6 +30,7 @@ def callback():
         abort(400)
     return 'OK'
 #關鍵字
+#關鍵字系統
 def KeyWord(event):
     KeyWordDict = {"你好":"你也好啊",
                    "你是誰":"我是大帥哥",
@@ -69,7 +70,7 @@ def Button(event):
 #指令系統，若觸發指令會回傳True
 def Command(event):
     tempText = event.message.text.split(",")
-    if tempText[0] == "發送" and event.source.user_id == "Uad9ac35b0ebba03da9c51ab1516a18ca":
+    if tempText[0] == "發送" and event.source.user_id == "U95418ebc4fffefdd89088d6f9dabd75b":
         line_bot_api.push_message(tempText[1], TextSendMessage(text=tempText[2]))
         return True
     else:
@@ -92,8 +93,8 @@ def handle_message(event):
     try:
         Reply(event)
         '''
-        line_bot_api.push_message("Uad9ac35b0ebba03da9c51ab1516a18ca", TextSendMessage(text=event.source.user_id + "說:"))
-        line_bot_api.push_message("Uad9ac35b0ebba03da9c51ab1516a18ca", TextSendMessage(text=event.message.text))
+        line_bot_api.push_message("U95418ebc4fffefdd89088d6f9dabd75b", TextSendMessage(text=event.source.user_id + "說:"))
+        line_bot_api.push_message("U95418ebc4fffefdd89088d6f9dabd75b", TextSendMessage(text=event.message.text))
         '''
     except Exception as e:
         line_bot_api.reply_message(event.reply_token, 
