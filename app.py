@@ -77,7 +77,7 @@ def Signup(user_id,name):
 def GetUserList():
     url = "https://script.google.com/macros/s/AKfycbwVs2Si91yKz6m3utpaPtsttbh_lUQ8LOQM3Zud2hPFxXCgW3u1/exec"
     payload = {
-        'sheetUrl':"https://docs.google.com/spreadsheets/d/1PGw2Eca9UCR8Qf_8c9_aW9X4x_Mw6SPmDgC5YgOBzX0/edit?usp=sharing",
+        'sheetUrl':"https://docs.google.com/spreadsheets/d/18KeDjQIXs0H7yLFM_PgdVMmknHfP0RYu0hbHuOZ9lbs/edit?usp=sharing",
         'sheetTag':"工作表1",
         'row': 1,
         'col': 1,
